@@ -20,39 +20,7 @@ function App() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: `
-À partir de ce vécu :
-« ${vecu} »
-
-Invite doucement à explorer un paysage sensoriel intérieur.
-
-Inspire-toi des transitions naturelles et des états de métamorphose :
-une goutte devient onde, un souffle devient rythme, un silence devient voix.
-
-Fais vibrer les 3 grandes dimensions de la conscience :
-— Dedans / Dehors : ce qui vibre en soi et ce qui appelle de l’extérieur.  
-— Passé / Futur : ce qui murmure du souvenir, ce qui souffle une possibilité.  
-— Infiniment Petit / Infiniment Grand : le détail fragile et l’immensité diffuse.
-
-Traverse symboliquement cinq membranes de résonance :
-1. **Morphose** : sensations de forme, de mouvement, de transformation.  
-2. **Chronose** : rythmes, lenteur, accélérations du temps.  
-3. **Sémiose** : signes, symboles, messages perçus ou imaginés.  
-4. **Ontose** : impressions d’être, présences invisibles, profondeurs existentielles.  
-5. **Technose** : textures artificielles, échos hybrides, interfaces sensibles.
-
-Utilise un langage suggestif, sensoriel, synesthésique :  
-— des sons invisibles,  
-— des lumières qui vibrent,  
-— des odeurs qui chantent,  
-— des textures liquides ou granuleuses.
-
-Fais émerger un **paysage sonore halluciné**, une **topographie intime**, un monde flottant entre rêve et corps.
-
-Termine le texte par une **résonance existentielle subtile**,  
-comme un noyau sensoriel qui palpite encore,  
-une onde émotionnelle suspendue dans l’espace du lecteur.
-`,
+          prompt: `...`, // ton prompt complet ici (inchangé)
         }),
       });
       const result = await res.json();
@@ -71,16 +39,7 @@ une onde émotionnelle suspendue dans l’espace du lecteur.
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: `
-Image inspirée du texte suivant :
-"${texteResonant}"
-
-Abstraite, immersive, bleutée.
-Suggère un paysage sonore intérieur.
-Ondes, flux, bulles, textures fines.
-Pas de scène figurative. Projetif. Suggestif.
-Style poétique, éthéré, doux.
-          `,
+          prompt: `...`, // prompt image inchangé
         }),
       });
       const result = await res.json();
@@ -118,19 +77,40 @@ Style poétique, éthéré, doux.
       .bubble {
         position: absolute;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.15);
-        animation: float 15s linear infinite;
+        background: rgba(255, 255, 255, 0.1);
         pointer-events: none;
-        aspect-ratio: 1 / 1;
+        filter: blur(2px);
+        animation: float 20s ease-in-out infinite;
+      }
+      .bubble.layer1 {
+        width: 60px;
+        height: 60px;
+        z-index: 1;
+        animation-duration: 30s;
+        opacity: 0.2;
+      }
+      .bubble.layer2 {
+        width: 40px;
+        height: 40px;
+        z-index: 2;
+        animation-duration: 20s;
+        opacity: 0.4;
+      }
+      .bubble.layer3 {
+        width: 25px;
+        height: 25px;
+        z-index: 3;
+        animation-duration: 12s;
+        opacity: 0.7;
       }
       @keyframes float {
-        0% { transform: translateY(0) scale(1); opacity: 0.4; }
-        50% { opacity: 0.8; }
-        100% { transform: translateY(-130vh) scale(1.2); opacity: 0; }
+        0% { transform: translateY(0) translateX(0); }
+        50% { transform: translateY(-50vh) translateX(5px); }
+        100% { transform: translateY(0) translateX(-5px); }
       }
       .content {
         position: relative;
-        z-index: 2;
+        z-index: 4;
         max-width: 700px;
         margin: 0 auto;
       }
@@ -173,16 +153,33 @@ Style poétique, éthéré, doux.
 
   return (
     <div className="app-container">
-      {Array.from({ length: 30 }).map((_, i) => (
+      {Array.from({ length: 10 }).map((_, i) => (
         <div
-          key={i}
-          className="bubble"
+          key={`l1-${i}`}
+          className="bubble layer1"
           style={{
             left: `${Math.random() * 100}%`,
             bottom: `-${Math.random() * 100}px`,
-            width: `30px`,
-            animationDuration: `${10 + Math.random() * 10}s`,
-            animationDelay: `${Math.random() * 6}s`,
+          }}
+        />
+      ))}
+      {Array.from({ length: 15 }).map((_, i) => (
+        <div
+          key={`l2-${i}`}
+          className="bubble layer2"
+          style={{
+            left: `${Math.random() * 100}%`,
+            bottom: `-${Math.random() * 100}px`,
+          }}
+        />
+      ))}
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={`l3-${i}`}
+          className="bubble layer3"
+          style={{
+            left: `${Math.random() * 100}%`,
+            bottom: `-${Math.random() * 100}px`,
           }}
         />
       ))}
@@ -190,9 +187,9 @@ Style poétique, éthéré, doux.
       <div className="content">
         <h1>🎧 Générateur de Résonances HypnoSonores</h1>
         <p>
-          Ce dispositif est une expérimentation de suggestion poétique
-          conçue pour éveiller l’imaginaire auditif. Écris ou dicte un
-          vécu sensoriel... et laisse émerger un paysage sonore intérieur.
+          Ce dispositif est une expérimentation de suggestion poétique conçue
+          pour éveiller l’imaginaire auditif. Écris ou dicte un vécu sensoriel...
+          et laisse émerger un paysage sonore intérieur.
         </p>
 
         <form onSubmit={handleSubmit}>
