@@ -1,0 +1,112 @@
+/* bubbles.css */
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  background: white;
+  color: black;
+  font-family: "Helvetica Neue", sans-serif;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: auto;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.text-block {
+  margin-top: 2rem;
+  background: #f6f6f6;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.hypno-text {
+  white-space: pre-line;
+  font-style: italic;
+}
+
+.image-result img {
+  margin-top: 1rem;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+/* Background bubbles animation */
+.bubbles-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubbles-background::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+  animation: float 10s infinite linear;
+  background-size: 200% 200%;
+  z-index: 1;
+}
+
+.bubbles-background span {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 150, 255, 0.2);
+  animation: rise 20s infinite ease-in;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
