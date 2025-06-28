@@ -21,16 +21,38 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt: `
-Imagine un paysage sensoriel intérieur né de ce vécu :
-"${vecu}"
+À partir de ce vécu :
+« ${vecu} »
 
-Écris un texte poétique, immersif, doux et suggestif.
-Utilise des images sonores, vibratoires, synesthésiques.
-Invite à halluciner un paysage sonore en 3D, sans rien expliquer.
-Fais émerger des sensations fines, des échos, des respirations.
+Invite doucement à explorer un paysage sensoriel intérieur.
 
-Finale : une résonance qui laisse flotter une émotion.
-          `,
+Inspire-toi des transitions naturelles et des états de métamorphose :
+une goutte devient onde, un souffle devient rythme, un silence devient voix.
+
+Fais vibrer les 3 grandes dimensions de la conscience :
+— Dedans / Dehors : ce qui vibre en soi et ce qui appelle de l’extérieur.  
+— Passé / Futur : ce qui murmure du souvenir, ce qui souffle une possibilité.  
+— Infiniment Petit / Infiniment Grand : le détail fragile et l’immensité diffuse.
+
+Traverse symboliquement cinq membranes de résonance :
+1. **Morphose** : sensations de forme, de mouvement, de transformation.  
+2. **Chronose** : rythmes, lenteur, accélérations du temps.  
+3. **Sémiose** : signes, symboles, messages perçus ou imaginés.  
+4. **Ontose** : impressions d’être, présences invisibles, profondeurs existentielles.  
+5. **Technose** : textures artificielles, échos hybrides, interfaces sensibles.
+
+Utilise un langage suggestif, sensoriel, synesthésique :  
+— des sons invisibles,  
+— des lumières qui vibrent,  
+— des odeurs qui chantent,  
+— des textures liquides ou granuleuses.
+
+Fais émerger un **paysage sonore halluciné**, une **topographie intime**, un monde flottant entre rêve et corps.
+
+Termine le texte par une **résonance existentielle subtile**,  
+comme un noyau sensoriel qui palpite encore,  
+une onde émotionnelle suspendue dans l’espace du lecteur.
+`,
         }),
       });
       const result = await res.json();
@@ -56,7 +78,7 @@ Image inspirée du texte suivant :
 Abstraite, immersive, bleutée.
 Suggère un paysage sonore intérieur.
 Ondes, flux, bulles, textures fines.
-Pas de scène figurative. Projetée.
+Pas de scène figurative. Projetif. Suggestif.
 Style poétique, éthéré, doux.
           `,
         }),
