@@ -16,7 +16,7 @@ function App() {
     setLoadingTexte(true);
     setTexteResonant("");
     try {
-      const res = await fetch("http://localhost:3001/api/haiku", {
+      const res = await fetch("/api/haiku", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -45,7 +45,7 @@ Finale : une résonance qui laisse flotter une émotion.
     setLoadingImage(true);
     setImageUrl("");
     try {
-      const res = await fetch("http://localhost:3001/api/generate", {
+      const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -99,6 +99,7 @@ Style poétique, éthéré, doux.
         background: rgba(255, 255, 255, 0.15);
         animation: float 15s linear infinite;
         pointer-events: none;
+        aspect-ratio: 1 / 1;
       }
       @keyframes float {
         0% { transform: translateY(0) scale(1); opacity: 0.4; }
@@ -157,9 +158,8 @@ Style poétique, éthéré, doux.
           style={{
             left: `${Math.random() * 100}%`,
             bottom: `-${Math.random() * 100}px`,
-            width: `40px`,
-            height: `40px`,
-            animationDuration: `${8 + Math.random() * 10}s`,
+            width: `30px`,
+            animationDuration: `${10 + Math.random() * 10}s`,
             animationDelay: `${Math.random() * 6}s`,
           }}
         />
